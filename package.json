@@ -22,7 +22,8 @@
     "moment": "^2.27.0",
     "vue": "^2.6.11",
     "vue-chartkick": "^0.6.1",
-    "vuetify": "^2.2.11"
+    "vuetify": "^2.2.11",
+    "@vue/cli-service": "~4.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
