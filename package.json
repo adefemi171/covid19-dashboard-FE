@@ -1,12 +1,18 @@
 {
+  "engines": {
+    "node": "10.x"
+  },
   "name": "covid19-board",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
+    "start": "npm run serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "heroku-postinstall": "npm install && npm run build"
   },
+  "heroku-postinstall": "npm install && npm run build",
   "dependencies": {
     "@cubejs-client/core": "^0.19.55",
     "@cubejs-client/vue": "^0.19.51",
