@@ -11,7 +11,7 @@
       <div class="col-sm-4">
         <query-builder :cubejs-api="cubejsApi" :query="covidDeathStateQuery">
           <template v-slot="{ loading, resultSet }">
-            <Chart title="Covid Deaths by State" type="number" :loading="loading" :result-set="resultSet"/>
+            <Chart title="Total Covid Death" type="number" :loading="loading" :result-set="resultSet"/>
           </template>
         </query-builder>
       </div>
@@ -20,10 +20,10 @@
     <br>
     <div class="row">
       <div class="col-sm-6">
-        <query-builder :cubejs-api="cubejsApi" :query="lineQuery">
+        <query-builder :cubejs-api="cubejsApi" :query="lineSexQuery">
           <template v-slot="{ loading, resultSet }">
             <Chart
-              title="New Deaths"
+              title="Covid Deaths by Sex"
               type="line"
               :loading="loading"
               :result-set="resultSet"
@@ -32,10 +32,34 @@
         </query-builder>
       </div>
       <div class="col-sm-6">
-        <query-builder :cubejs-api="cubejsApi" :query="barQuery">
+        <query-builder :cubejs-api="cubejsApi" :query="lineAgeQuery">
           <template v-slot="{ loading, resultSet }">
             <Chart
-              title="Orders by State"
+              title="Covid Deaths by Age Group"
+              type="line"
+              :loading="loading"
+              :result-set="resultSet"
+            />
+          </template>
+        </query-builder>
+      </div>
+      <div class="col-sm-6">
+        <query-builder :cubejs-api="cubejsApi" :query="barMaleQuery">
+          <template v-slot="{ loading, resultSet }">
+            <Chart
+              title="Male filtering of Covid 19 death by State"
+              type="stackedBar"
+              :loading="loading"
+              :result-set="resultSet"
+            />
+          </template>
+        </query-builder>
+      </div>
+      <div class="col-sm-6">
+        <query-builder :cubejs-api="cubejsApi" :query="barFemaleQuery">
+          <template v-slot="{ loading, resultSet }">
+            <Chart
+              title="Female filtering of Covid 19 death by State"
               type="stackedBar"
               :loading="loading"
               :result-set="resultSet"
@@ -69,43 +93,79 @@ export default {
     return {
       cubejsApi,
       deathsQuery: { 
-        measures: ["CovidTimeseries.count"],
-        filters: [
-          {
-            "dimension": "CovidTimeseries.state",
-            "operator": "contains",
-            "values": [
-              "A"
-            ]
-          }
-        ]      
+        measures: ["CovidTimeseries.totalDeath"],
+        dimensions: [],
+        filters: []      
       },
       covidDeathStateQuery: {
-        measures: ["CovidTimeseries.count"],
+        measures: ["CovidTimeseries.totalDeath"],
          dimensions: [
-          "CovidTimeseries.state"
+          "CovidTimeseries.covidDeath"
         ],
-        filters: [ ]
+        filters: []
       },
-      lineQuery: {
-        limit: 150,
-        measures: ["CovidTimeseries.count"],
+      lineSexQuery: {
+        limit: 10,
+        measures: ["CovidTimeseries.totalDeath"],
         dimensions: [
-          "CovidTimeseries.sex"
+          "CovidTimeseries.sex",
+          "CovidTimeseries.covidDeath"
         ],
-        timeDimensions: [
+        timeDimensions: []
+      },
+      lineAgeQuery: {
+        limit: 50,
+        measures: ["CovidTimeseries.totalDeath"],
+        dimensions: [
+          "CovidTimeseries.ageGroup",
+          "CovidTimeseries.covidDeath"
+        ],
+        timeDimensions: [],
+        order:{
+          "CovidTimeseries.ageGroup": "asc"
+        },
+      },
+      barMaleQuery: {
+        limit: 50,
+        measures: ["CovidTimeseries.totalDeath"],
+        dimensions: [
+          "CovidTimeseries.covidDeath",
+          "CovidTimeseries.state"
+          ],
+        timeDimensions: [],
+        order:{
+          "CovidTimeseries.state": "asc"
+        },
+        filters: [
           {
-            dimension: "CovidTimeseries.dataAsOf",
-            granularity: 'week',
-            dateRange: "This month"
+            dimension: "CovidTimeseries.sex",
+            operator: "equals",
+            values: [
+              "Male"
+            ]
           }
         ]
       },
-      barQuery: {
+      barFemaleQuery: {
         limit: 50,
-        measures: ["CovidTimeseries.count"],
-        dimensions: ["CovidTimeseries.state"],
-        timeDimensions: []
+        measures: ["CovidTimeseries.totalDeath"],
+        dimensions: [
+          "CovidTimeseries.covidDeath",
+          "CovidTimeseries.state"
+          ],
+        timeDimensions: [],
+        order:{
+          "CovidTimeseries.state": "asc"
+        },
+        filters: [
+          {
+            dimension: "CovidTimeseries.sex",
+            operator: "equals",
+            values: [
+              "Female"
+            ]
+          }
+        ]
       }
     };
   }

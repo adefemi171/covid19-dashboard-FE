@@ -1,25 +1,21 @@
 <template>
-  <la-cartesian autoresize :data="values" :colors="colors" :padding="[0, 0, 5, 0]">
+  <la-cartesian autoresize :data="values" :colors="colors" :padding="[20, 10, 5, 20]">
     <la-line curve :width="2" color="#7DB3FF" :prop="metrics[0]"/>
-    <la-y-axis :nbTicks="4"></la-y-axis>
-    <la-x-axis prop="x" :format="dateFormatter" :interval="6"></la-x-axis>
+    <la-y-axis :nbTicks="10"></la-y-axis>
+    <la-x-axis prop="x" :interval="30"></la-x-axis>
     <la-tooltip/>
   </la-cartesian>
 </template>
 
 <script>
-import moment from "moment";
+
 export default {
   name: "LineChart",
   props: {
     values: Array,
     metrics: Array
   },
-  methods: {
-    dateFormatter: function(value) {
-      return moment(value).format("MMM YY");
-    }
-  },
+
   data() {
     return {
       colors: [
