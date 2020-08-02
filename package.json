@@ -16,14 +16,15 @@
   "dependencies": {
     "@cubejs-client/core": "^0.19.55",
     "@cubejs-client/vue": "^0.19.51",
+    "@vue/cli-service": "~4.4.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
     "laue": "^0.2.1",
     "moment": "^2.27.0",
     "vue": "^2.6.11",
     "vue-chartkick": "^0.6.1",
-    "vuetify": "^2.2.11",
-    "@vue/cli-service": "~4.4.0"
+    "vuetify": "^2.2.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
