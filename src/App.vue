@@ -105,7 +105,7 @@ export default {
         filters: []
       },
       lineSexQuery: {
-        limit: 10,
+        limit: 5,
         measures: ["CovidTimeseries.totalDeath"],
         dimensions: [
           "CovidTimeseries.sex",
@@ -114,7 +114,7 @@ export default {
         timeDimensions: []
       },
       lineAgeQuery: {
-        limit: 50,
+        limit: 10,
         measures: ["CovidTimeseries.totalDeath"],
         dimensions: [
           "CovidTimeseries.ageGroup",
