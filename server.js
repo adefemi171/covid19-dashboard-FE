@@ -5,6 +5,6 @@ const app = express();
 app.use(express.static('dist'));
 
 
-app.listen(8081, function () {
-  console.log('Example app listening on port 8081!');
+app.listen(process.env.PORT || 5000, function () {
+  console.log('Example app listening on port 5000!');
 });
