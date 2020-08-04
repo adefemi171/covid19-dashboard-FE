@@ -10,9 +10,8 @@
 </template>
 
 <script>
-
 export default {
-  name: "LineChart",
+  name: "BarChart",
   props: {
     values: Array,
     metrics: Array
