@@ -98,9 +98,9 @@ export default {
         filters: []      
       },
       covidDeathStateQuery: {
-        measures: ["CovidTimeseries.totalDeath"],
+        measures: ["CovidTimeseries.covidDeath"],
          dimensions: [
-          "CovidTimeseries.covidDeath"
+          
         ],
         filters: []
       },
@@ -109,7 +109,7 @@ export default {
         measures: ["CovidTimeseries.totalDeath"],
         dimensions: [
           "CovidTimeseries.sex",
-          "CovidTimeseries.covidDeath"
+          "CovidTimeseries.allCovidDeath"
         ],
         timeDimensions: []
       },
@@ -118,7 +118,7 @@ export default {
         measures: ["CovidTimeseries.totalDeath"],
         dimensions: [
           "CovidTimeseries.ageGroup",
-          "CovidTimeseries.covidDeath"
+          "CovidTimeseries.allCovidDeath"
         ],
         timeDimensions: [],
         order:{
@@ -129,7 +129,7 @@ export default {
         limit: 50,
         measures: ["CovidTimeseries.totalDeath"],
         dimensions: [
-          "CovidTimeseries.covidDeath",
+          "CovidTimeseries.allCovidDeath",
           "CovidTimeseries.state"
           ],
         timeDimensions: [],
@@ -150,7 +150,7 @@ export default {
         limit: 50,
         measures: ["CovidTimeseries.totalDeath"],
         dimensions: [
-          "CovidTimeseries.covidDeath",
+          "CovidTimeseries.allCovidDeath",
           "CovidTimeseries.state"
           ],
         timeDimensions: [],
