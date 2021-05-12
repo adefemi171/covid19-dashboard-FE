@@ -17,7 +17,7 @@
     "@cubejs-client/core": "^0.19.55",
     "@cubejs-client/vue": "^0.19.51",
     "@vue/cli-service": "~4.4.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "laue": "^0.2.1",
