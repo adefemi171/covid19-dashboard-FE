@@ -19,7 +19,7 @@
     "@vue/cli-service": "~4.4.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "laue": "^0.2.1",
     "moment": "^2.27.0",
     "vue": "^2.6.11",
